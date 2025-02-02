@@ -22,7 +22,7 @@ This project predicts a prospect's MLB potential using logistic regression by an
     model = joblib.load('src/logistic_regression_model_final.pkl')
 
     # Sample data with feature names
-    feature_names = ['HitDistance', 'ExitVelocity', 'LaunchAngle']
+    feature_names = ['ExitVelocity', 'HitDistance', 'LaunchAngle']
     sample_data = pd.DataFrame([[0.5, 1.2, 3.4]], columns=feature_names)
 
     # Make a prediction
