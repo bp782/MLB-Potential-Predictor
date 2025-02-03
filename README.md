@@ -1,37 +1,57 @@
-# MLB Potential Predictor
+# MLB Prospect Prediction
 
 ## Project Overview
-This project predicts a prospect's MLB potential using logistic regression by analyzing performance metrics such as hit distance, exit velocity, and launch angle.
+This project predicts an MLB player's potential and projects their career impact based on current performance and historical data.
 
-## Installation & Setup
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/bp782/MLB-Potential-Predictor.git
-    cd MLB-Potential-Predictor
-    ```
-2. Install required libraries:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3. Load the model and make predictions:
-    ```python
-    import joblib
-    import pandas as pd
+## How the Model Works
+The model uses a logistic regression approach, trained on features like hit distance, exit velocity, and launch angle to predict the success of a prospect.
 
-    # Load the model
-    model = joblib.load('src/logistic_regression_model_final.pkl')
+## How to Run the Model
 
-    # Sample data with feature names
-    feature_names = ['ExitVelocity', 'HitDistance', 'LaunchAngle']
-    sample_data = pd.DataFrame([[0.5, 1.2, 3.4]], columns=feature_names)
+### Running the Model Locally
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<bp782>/MLB-Potential-Predictor.git
+   cd MLB-Potential-Predictor
+   
+2. Install dependencies
+pip install -r requirements.txt
 
-    # Make a prediction
-    prediction = model.predict(sample_data)
-    print("Prediction:", prediction)
-    ```
+3. Run the model script
+python integrate_api.py
 
-## Usage
-- Provide instructions on how to use the project.
+4. Example usage to test predictions
+import joblib
+import pandas as pd
 
-## License
-- Include the open-source license for your project.# MLB-Potential-Predictor
+# Load the model
+model = joblib.load('src/logistic_regression_model_final.pkl')
+
+# Function to predict
+def predict(data):
+    features = pd.DataFrame([data])
+    prediction = model.predict(features)
+    return {'prediction': prediction.tolist()}
+
+# Example usage:
+data = {
+  "ExitVelocity": 90,
+  "HitDistance": 150,
+  "LaunchAngle": 20
+}
+
+result = predict(data)
+print(result)
+
+Deployment status 
+
+The project does not include a deployed model due to billing restrictions. However the trained logistic regression model has been integrated with the Gemini API and can be tested locally
+
+Usage 
+
+The code and model provided in the repository can predict the potential of MLB players based on their performance metrics  
+
+License 
+
+This project is licensed under the MIT License 
+
